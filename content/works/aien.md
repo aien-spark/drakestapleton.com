@@ -24,16 +24,16 @@ These are being gathered into one source tree, **Aienix**, so they move in step 
 
 ## How a change gets in
 
-Every pull request in every AIEN repository is judged on the Spark itself, by our own pipeline, not by a hosted runner. The judge runs the repository's gates on the real hardware, signs an evidence bundle tied to the exact commit, and publishes the verdict. A change merges only when that verdict is PASS. A green hosted check means the bridge ran; it is not the verdict.
+Every pull request in every AIEN repository is judged on the Spark itself, by my own pipeline, not by a hosted runner. The judge runs the repository's gates on the real hardware, signs an evidence bundle tied to the exact commit, and publishes the verdict. A change merges only when that verdict is PASS. A green hosted check means the bridge ran; it is not the verdict.
 
-## What we measure
+## What I measure
 
 Two rules govern every number the project publishes.
 
-- **Against ourselves and the ceiling.** Speed is reported against the machine's physical limit and against our own previous run. We do not publish comparisons with other people's systems; anyone who wants a comparison can run the published bundle against us.
+- **Against my own runs and the ceiling.** Speed is reported against the machine's physical limit and against my own previous run. I do not publish comparisons with other people's systems; anyone who wants a comparison can run the published bundle against mine.
 - **Receipts, not promises.** A figure appears only when it resolves to a reproducible command and a signed bundle. Figures that predate this standard were withdrawn from this site on 23 September 2026 and live on only in the repository history.
 
-The guiding measure is what we call Turing yield: how many held-out bits the system actually learned, what it cost to learn them, and whether that learning made the next discovery easier. The model's standing question is "how do I get more Turing today?"
+The guiding measure is what I call Turing yield: how many held-out bits the system actually learned, what it cost to learn them, and whether that learning made the next discovery easier. The model's standing question is "how do I get more Turing today?"
 
 ## Principles
 

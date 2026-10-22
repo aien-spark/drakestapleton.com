@@ -158,14 +158,14 @@ const WORLDS: [World; 18] = [
             "About 355,000 lines of C: a lexer, parser, type checker, and an encoder that emits AArch64 machine code.",
             "A hardware qualification ladder on the GB10 that reached a conditional pass at its last rung.",
             "No CUDA toolkit anywhere in the plan.",
-            "<b>Its GPU half is now its own open source project, CUDA++</b>: everything CUDA gives you plus the motor, with no NVIDIA software above the kernel driver. <a href=\"/cudaplusplus\">How we built it</a>.",
+            "<b>Its GPU half is now its own open source project, CUDA++</b>: everything CUDA gives you plus the motor, with no NVIDIA software above the kernel driver. <a href=\"/cudaplusplus\">How I built it</a>.",
         ],
         quote: None, photo: None,
         link: ("/research", "Read the research"),
     },
     World {
         id: "core", realm: Realm::Machine, name: "Sovereign core", x: 93.0, y: 52.0, size: 62,
-        tag: "The runtime that serves a large model on our own kernels.",
+        tag: "The runtime that serves a large model on my own kernels.",
         glyph: "M12 3 L21 8 L12 13 L3 8 Z M3 12 L12 17 L21 12 M3 16 L12 21 L21 16",
         facts: &[
             "<b>About 285,000 lines of Rust</b> in 57 crates and 34 programs, with more than 3,000 tests.",
@@ -225,7 +225,7 @@ const WORLDS: [World; 18] = [
         glyph: "M7 3 H17 L20 6 V21 H7 Z M10 9 H17 M10 13 H17 M10 17 H14",
         facts: &[
             "The prime-counting benchmark on the GB10 runs 20.3 times faster than its own frozen starting point.",
-            "We never compare ourselves with other people's systems. Anyone can rerun the published bundle.",
+            "I never compare my work with other people's systems. Anyone can rerun the published bundle.",
         ],
         quote: None, photo: None,
         link: ("/evidence", "Open the evidence hub"),
