@@ -73,7 +73,7 @@
   },
   "/works": {
     "title": "Works | Drake Stapleton",
-    "description": "A public catalog of Drake Stapleton's shipped systems: Atlas Symphony, Atlas Harness, MobDev and Panel Arena, DefiantMob, BeltBrain, DHG Hive, the 2025 foundations, AIEN, AEGIS, and inference research."
+    "description": "A public catalog of Drake Stapleton's shipped systems: Atlas Symphony, Atlas Harness, MobDev and Panel Arena, DefiantMob, BeltBrain, DHG Hive, the 2025 foundations, AIEN, CUDA++, AEGIS, and inference research."
   },
   "/works/atlas-symphony": {
     "title": "Atlas Symphony | Works by Drake Stapleton",
@@ -102,6 +102,14 @@
   "/works/foundations-2025": {
     "title": "2025 Foundations | Works by Drake Stapleton",
     "description": "The 2025 foundations cover the financial ledger, ParseSDS, CRM, meetings, and DMAIC systems that preceded model orchestration."
+  },
+  "/cudaplusplus": {
+    "title": "CUDA++: the GPU half of Omega, and how we built it | Drake Stapleton",
+    "description": "CUDA++ is the GPU half of Omega, its own MIT project: everything CUDA gives you plus the motor, on the NVIDIA GPUs people already own, with no NVIDIA user-space software. How we built it, reverse engineering included."
+  },
+  "/works/cudaplusplus": {
+    "title": "CUDA++ | Works by Drake Stapleton",
+    "description": "CUDA++ is the GPU half of Omega, its own MIT project: everything CUDA gives you plus the motor, with no NVIDIA user-space software, and how it was built."
   },
   "/works/aien": {
     "title": "AIEN | Works by Drake Stapleton",

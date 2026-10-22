@@ -158,6 +158,7 @@ const WORLDS: [World; 18] = [
             "About 355,000 lines of C: a lexer, parser, type checker, and an encoder that emits AArch64 machine code.",
             "A hardware qualification ladder on the GB10 that reached a conditional pass at its last rung.",
             "No CUDA toolkit anywhere in the plan.",
+            "<b>Its GPU half is now its own open source project, CUDA++</b>: everything CUDA gives you plus the motor, with no NVIDIA software above the kernel driver. <a href=\"/cudaplusplus\">How we built it</a>.",
         ],
         quote: None, photo: None,
         link: ("/research", "Read the research"),
