@@ -1,11 +1,11 @@
 {
   "/": {
     "title": "Drake Stapleton | Freedom Fighter, AI Architect & Operator",
-    "description": "The personal project record of Drake Stapleton, Freedom Fighter, AI Architect & Operator: model training, research, Atlas, and what our generation can build with AI."
+    "description": "The personal project record of Drake Stapleton, Freedom Fighter, AI Architect & Operator: model training, research, Atlas, and what my generation can build with AI."
   },
   "/interest": {
     "title": "Start a Conversation | Drake Stapleton",
-    "description": "Leave Drake Stapleton a note about a question, an idea, the documented journey, or research that advances what our generation can build with AI."
+    "description": "Leave Drake Stapleton a note about a question, an idea, the documented journey, or research that advances what my generation can build with AI."
   },
   "/donate": {
     "title": "Donate | Drake Stapleton",
@@ -104,8 +104,8 @@
     "description": "The 2025 foundations cover the financial ledger, ParseSDS, CRM, meetings, and DMAIC systems that preceded model orchestration."
   },
   "/cudaplusplus": {
-    "title": "CUDA++: the GPU half of Omega, and how we built it | Drake Stapleton",
-    "description": "CUDA++ is the GPU half of Omega, its own MIT project: everything CUDA gives you plus the motor, on the NVIDIA GPUs people already own, with no NVIDIA user-space software. How we built it, reverse engineering included."
+    "title": "CUDA++: the GPU half of Omega, and how I built it | Drake Stapleton",
+    "description": "CUDA++ is the GPU half of Omega, its own MIT project: everything CUDA gives you plus the motor, on the NVIDIA GPUs people already own, with no NVIDIA user-space software. How I built it, reverse engineering included."
   },
   "/works/cudaplusplus": {
     "title": "CUDA++ | Works by Drake Stapleton",

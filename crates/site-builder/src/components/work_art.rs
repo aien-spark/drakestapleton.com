@@ -59,7 +59,7 @@ const AIEN_LAYERS: [(&str, &str, &str); 6] = [
 
 const FLOW_STEPS: [(&str, &str); 4] = [
     ("Pull request", "Opened in any AIEN repository."),
-    ("Judged on the Spark", "Our own pipeline runs the repository's gates on the real hardware, not a hosted runner."),
+    ("Judged on the Spark", "My own pipeline runs the repository's gates on the real hardware, not a hosted runner."),
     ("Signed evidence bundle", "Tied to the exact commit and published with the verdict."),
     ("Verdict", "A change merges only when the verdict is PASS."),
 ];
@@ -76,7 +76,7 @@ const RESEARCH_HERO: &str = r#"<svg class="ph-art" viewBox="0 0 960 300" role="i
 
 const RESEARCH_Q: [(&str, &str); 3] = [
     ("Did it learn anything?", "Held-out bits: facts or capability the system did not have, tested on data it never saw."),
-    ("What did it cost?", "The time and energy spent learning them, against our own previous run."),
+    ("What did it cost?", "The time and energy spent learning them, against my own previous run."),
     ("Did it get easier?", "Whether what it learned made the next discovery cheaper."),
 ];
 
@@ -177,7 +177,7 @@ pub fn research_figures() -> Markup {
                         li { h3 { (name) } p { (body) } }
                     }
                 }
-                p class="wa-note" { "Speed is reported against the machine's physical limit and against our own previous run, never against someone else's system." }
+                p class="wa-note" { "Speed is reported against the machine's physical limit and against my own previous run, never against someone else's system." }
             }
         }
     }

@@ -1,5 +1,5 @@
 # Drake Stapleton
-> Freedom Fighter, AI Architect & Operator. A personal record of projects, research, and the life behind the work. Open to good conversation and research partnerships that advance what our generation can build with AI.
+> Freedom Fighter, AI Architect & Operator. A personal record of projects, research, and the life behind the work. Open to good conversation and research partnerships that advance what my generation can build with AI.
 
 Drake Stapleton documents production orchestration, GPU systems, model training, community work, and Atlas.
 

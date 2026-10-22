@@ -44,10 +44,10 @@ pub fn render_evidence_page(facts: Option<&Facts>) -> Markup {
                 h2 style="font-family: var(--heading); margin-bottom: 24px;" { "The Cryptographic Improvement Ledger" }
                 div class="prose reading-width" {
                     p {
-                        "Every change to an AIEN repository is judged on the Spark itself by our own pipeline. The verdict is a signed evidence bundle tied to the exact commit, and a change merges only when that bundle says PASS. The card above shows the current verdict for the host runtime, read from the record aienos.com publishes."
+                        "Every change to an AIEN repository is judged on the Spark itself by my own pipeline. The verdict is a signed evidence bundle tied to the exact commit, and a change merges only when that bundle says PASS. The card above shows the current verdict for the host runtime, read from the record aienos.com publishes."
                     }
                     p {
-                        "Speed is reported against the machine's physical ceiling and against our own previous run, never against someone else's system. A figure appears on this site only when it resolves to a receipt."
+                        "Speed is reported against the machine's physical ceiling and against my own previous run, never against someone else's system. A figure appears on this site only when it resolves to a receipt."
                     }
                 }
             }

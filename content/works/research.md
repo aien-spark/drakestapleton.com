@@ -5,15 +5,15 @@ date: October 2026
 summary: What the AIEN research program measures today, why an earlier study was withdrawn, and where the current results with receipts live.
 ---
 
-The research question behind AIEN is simple to state: can a machine I own learn something real, keep learning, and show its work? Everything we measure serves that question.
+The research question behind AIEN is simple to state: can a machine I own learn something real, keep learning, and show its work? Everything I measure serves that question.
 
-## What we measure
+## What I measure
 
-**Turing yield.** The unit is the held-out bit: a fact or capability the system did not have, tested on data it never saw, so a pass means learning rather than memory. We ask three things of every run. Did it learn anything? What did it cost to learn, in time and energy? Did what it learned make the next discovery easier? A run is judged against our own previous run, never against someone else's system.
+**Turing yield.** The unit is the held-out bit: a fact or capability the system did not have, tested on data it never saw, so a pass means learning rather than memory. I ask three things of every run. Did it learn anything? What did it cost to learn, in time and energy? Did what it learned make the next discovery easier? A run is judged against my own previous run, never against someone else's system.
 
 **Verified understanding.** Weights suggest, programs explain, verification decides, and evidence teaches. A claim enters the record only when it resolves to a reproducible command and a signed evidence bundle produced by the Spark judge on the real hardware.
 
-**Distance to the ceiling.** When we report speed, we report it as a fraction of the machine's physical limit and as a change against our own frozen baseline. That tells us how much software is still standing in the way of the hardware.
+**Distance to the ceiling.** When I report speed, I report it as a fraction of the machine's physical limit and as a change against my own frozen baseline. That tells me how much software is still standing in the way of the hardware.
 
 ## Programs in flight
 

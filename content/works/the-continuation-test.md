@@ -41,7 +41,7 @@ There are two kinds of games. It has rules, boundaries, and an ending. Chess is 
 
 An infinite game is played to keep playing. It has no ending. The goal is not victory but continuation. A conversation between friends is an infinite game. A craft is an infinite game. You don't win them. You keep them going, or you lose them by stopping.
 
-Here is the scientific problem with any test that demands a yes-or-no verdict on a mind. We have just seen that minds sit on a continuum. A binary verdict on a continuum is a category error. It is like asking at which exact shade gray becomes white, and building a test around the answer. You can build the test. Candidates will pass and fail it. But the line it draws exists only in the test, not in the world.
+Here is the scientific problem with any test that demands a yes-or-no verdict on a mind. Section 2 showed that minds sit on a continuum. A binary verdict on a continuum is a category error. It is like asking at which exact shade gray becomes white, and building a test around the answer. You can build the test. Candidates will pass and fail it. But the line it draws exists only in the test, not in the world.
 
 A binary question about a continuous spectrum will always mislead. The scientific question is not "does it pass?" The scientific question is "where is it on the spectrum, and is it moving?"
 
