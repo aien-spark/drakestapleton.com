@@ -295,6 +295,8 @@ fn verify_site(dist: &Path) {
         ("works/dhg-hive/index.html", "/works/dhg-hive"),
         ("works/foundations-2025/index.html", "/works/foundations-2025"),
         ("works/aien/index.html", "/works/aien"),
+        ("cudaplusplus/index.html", "/cudaplusplus"),
+        ("works/cudaplusplus/index.html", "/works/cudaplusplus"),
         ("works/aegis/index.html", "/works/aegis"),
         ("works/research/index.html", "/works/research"),
         ("404.html", "/404"),

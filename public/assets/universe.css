@@ -127,6 +127,7 @@
 .world-facts li { position: relative; padding-left: 1.1rem; font: 400 1.05rem/1.55 var(--u-serif); color: var(--u-dim); }
 .world-facts li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--c); }
 .world-facts b { font-weight: 600; color: var(--u-text); }
+.world-facts a { color: var(--c); text-decoration: underline; text-underline-offset: 3px; }
 .world-quote { margin: 0 0 1.2rem; padding: 0.2rem 0 0.2rem 1rem; border-left: 3px solid var(--c); font: italic 400 1.1rem/1.5 var(--u-serif); color: var(--u-text); }
 .world-actions { margin: 0 0 1.4rem; }
 .world-go { display: inline-block; padding: 0.7rem 1.2rem; border-radius: 999px; background: var(--c); font: 500 0.98rem/1 var(--u-font); color: #08090c; text-decoration: none; }
