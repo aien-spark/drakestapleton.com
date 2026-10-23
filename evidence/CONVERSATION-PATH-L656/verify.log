@@ -1,0 +1,66 @@
+warning: function `render_telemetry_bar` is never used
+ --> crates/site-builder/src/components/telemetry.rs:3:8
+  |
+3 | pub fn render_telemetry_bar() -> Markup {
+  |        ^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: fields `repo` and `commit_title` are never read
+  --> crates/site-builder/src/components/facts.rs:18:9
+   |
+16 | pub struct Receipt {
+   |            ------- fields in this struct
+17 |     #[serde(default)]
+18 |     pub repo: String,
+   |         ^^^^
+...
+22 |     pub commit_title: String,
+   |         ^^^^^^^^^^^^
+   |
+   = note: `Receipt` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: `site-builder` (bin "site-builder") generated 2 warnings
+    Finished `release` profile [optimized] target(s) in 0.09s
+     Running `target/release/site-builder verify dist`
+============================================================
+  AIEN Native Static Site Builder & Integrity Verifier      
+  Engine: Pure Rust & Maud | Target: dist
+  Mode: verify
+============================================================
+  [OK] index.html (40737 bytes) -> /
+  [OK] aien/index.html (16195 bytes) -> /aien
+  [OK] research/index.html (9974 bytes) -> /research
+  [OK] atlas/index.html (7554 bytes) -> /atlas
+  [OK] aegis/index.html (15870 bytes) -> /aegis
+  [OK] software/index.html (7073 bytes) -> /software
+  [OK] path/index.html (36304 bytes) -> /path
+  [OK] evidence/index.html (8198 bytes) -> /evidence
+  [OK] what-i-learned/index.html (7174 bytes) -> /what-i-learned
+  [OK] philosophy/index.html (16428 bytes) -> /philosophy
+  [OK] scholar/index.html (8627 bytes) -> /scholar
+  [OK] interest/index.html (8381 bytes) -> /interest
+  [OK] donate/index.html (6316 bytes) -> /donate
+  [OK] symphony/index.html (7358 bytes) -> /symphony
+  [OK] symphony/first/index.html (7284 bytes) -> /symphony/first
+  [OK] symphony/workflow/index.html (7162 bytes) -> /symphony/workflow
+  [OK] symphony/map/index.html (7190 bytes) -> /symphony/map
+  [OK] works/index.html (12156 bytes) -> /works
+  [OK] works/atlas-symphony/index.html (11567 bytes) -> /works/atlas-symphony
+  [OK] works/atlas-harness/index.html (10030 bytes) -> /works/atlas-harness
+  [OK] works/mobdev-panel-arena/index.html (7850 bytes) -> /works/mobdev-panel-arena
+  [OK] works/defiantmob/index.html (7411 bytes) -> /works/defiantmob
+  [OK] works/beltbrain/index.html (6448 bytes) -> /works/beltbrain
+  [OK] works/dhg-hive/index.html (7746 bytes) -> /works/dhg-hive
+  [OK] works/foundations-2025/index.html (7804 bytes) -> /works/foundations-2025
+  [OK] works/aien/index.html (16054 bytes) -> /works/aien
+  [OK] cudaplusplus/index.html (9812 bytes) -> /cudaplusplus
+  [OK] works/cudaplusplus/index.html (9539 bytes) -> /works/cudaplusplus
+  [OK] works/aegis/index.html (15804 bytes) -> /works/aegis
+  [OK] works/research/index.html (9932 bytes) -> /works/research
+  [OK] 404.html (5884 bytes) -> /404
+------------------------------------------------------------
+  Verified 31 pre-rendered static routes (347 KB total)
+  Integrity & Unslop Invariants: PASS
+  Build and Verification Completed in: 1.76ms
+============================================================

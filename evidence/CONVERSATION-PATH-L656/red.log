@@ -1,0 +1,67 @@
+   Compiling site-builder v0.1.0 (/Users/drakestapleton/.hermes/cache/scratch/loop13-personal71/crates/site-builder)
+warning: function `render_telemetry_bar` is never used
+ --> crates/site-builder/src/components/telemetry.rs:3:8
+  |
+3 | pub fn render_telemetry_bar() -> Markup {
+  |        ^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: fields `repo` and `commit_title` are never read
+  --> crates/site-builder/src/components/facts.rs:18:9
+   |
+16 | pub struct Receipt {
+   |            ------- fields in this struct
+17 |     #[serde(default)]
+18 |     pub repo: String,
+   |         ^^^^
+...
+22 |     pub commit_title: String,
+   |         ^^^^^^^^^^^^
+   |
+   = note: `Receipt` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: `site-builder` (bin "site-builder" test) generated 2 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.96s
+     Running unittests src/main.rs (target/debug/deps/site_builder-1b5c8c7e8e830ab2)
+
+running 11 tests
+test components::facts::tests::a_run_the_judge_did_not_perform_says_blocked ... ok
+test components::facts::tests::missing_record_is_said_plainly ... ok
+test components::facts::tests::a_failing_verdict_is_shown_as_fail ... ok
+test pages::interest::tests::external_form_is_disclosed_with_a_native_email_alternative ... FAILED
+test pages::interest::tests::inquiries_have_bounded_examples_and_useful_context ... FAILED
+test components::facts::tests::parses_the_aienos_facts_shape ... ok
+test pages::interest::tests::existing_single_form_provider_and_payload_are_preserved ... ok
+test tests::test_unslop_punctuation_invariants ... ok
+test tests::test_metadata_deserialization ... ok
+test tests::test_markdown_reader_parsing ... ok
+test pages::home::tests::introductory_conversation_link_is_contextual_and_retains_the_tour ... FAILED
+
+failures:
+
+---- pages::interest::tests::external_form_is_disclosed_with_a_native_email_alternative stdout ----
+
+thread 'pages::interest::tests::external_form_is_disclosed_with_a_native_email_alternative' (1317278) panicked at crates/site-builder/src/pages/interest.rs:81:9:
+assertion failed: page.contains("FormSubmit")
+
+---- pages::interest::tests::inquiries_have_bounded_examples_and_useful_context stdout ----
+
+thread 'pages::interest::tests::inquiries_have_bounded_examples_and_useful_context' (1317279) panicked at crates/site-builder/src/pages/interest.rs:54:9:
+assertion failed: page.contains("What would you like to discuss?")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- pages::home::tests::introductory_conversation_link_is_contextual_and_retains_the_tour stdout ----
+
+thread 'pages::home::tests::introductory_conversation_link_is_contextual_and_retains_the_tour' (1317276) panicked at crates/site-builder/src/pages/home.rs:392:9:
+assertion failed: intro.contains("href=\"/interest\"")
+
+
+failures:
+    pages::home::tests::introductory_conversation_link_is_contextual_and_retains_the_tour
+    pages::interest::tests::external_form_is_disclosed_with_a_native_email_alternative
+    pages::interest::tests::inquiries_have_bounded_examples_and_useful_context
+
+test result: FAILED. 8 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p site-builder --bin site-builder`
