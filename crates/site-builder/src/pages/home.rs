@@ -362,8 +362,10 @@ pub fn render_home_page(facts: Option<&Facts>) -> Markup {
                     h1 { "Drake Stapleton" }
                     p class="uni-lede" { "A farm kid who became a chemist, then an engineer, and is now building a whole computer from the ground up." }
                     p class="uni-sub" { "This is a map of my life and my work. Pick any world, or take the tour." }
+                    p class="uni-sub" id="conversation-context" { "Here from a demo or project link? Tell me what caught your attention." }
                     div class="uni-cta" {
-                        a class="uni-btn primary" href="#w-home" { "Begin the journey" }
+                        a class="uni-btn primary" href="/interest" aria-describedby="conversation-context" { "Start a conversation" }
+                        a class="uni-btn" href="#w-home" { "Begin the journey" }
                         a class="uni-btn" href="#w-aien" { "Jump to the machine" }
                     }
                 }
@@ -377,5 +379,24 @@ pub fn render_home_page(facts: Option<&Facts>) -> Markup {
                 (render_live_block(facts))
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn introductory_conversation_link_is_contextual_and_retains_the_tour() {
+        let page = render_home_page(None).into_string();
+        let intro = page.split_once("<div class=\"uni-intro\">").unwrap().1;
+        let intro = intro.split_once("<article ").unwrap().0;
+        assert!(intro.contains("href=\"/interest\""));
+        assert!(intro.contains("Start a conversation"));
+        assert!(intro.contains("demo or project link"));
+        assert!(intro.contains("href=\"#w-home\""));
+        assert!(intro.contains("Begin the journey"));
+        assert!(intro.contains("href=\"#w-aien\""));
+        assert!(intro.contains("Jump to the machine"));
     }
 }
