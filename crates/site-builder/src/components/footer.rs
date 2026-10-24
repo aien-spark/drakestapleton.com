@@ -19,6 +19,7 @@ pub fn render_footer() -> Markup {
                     a href="/atlas" { "Atlas" }
                     a href="/aegis" { "AEGIS" }
                     a href="/interest" { "Conversation" }
+                    a href="/glossary" { "Glossary" }
                     a href="https://x.com/aienscore" { "X" }
                 }
             }

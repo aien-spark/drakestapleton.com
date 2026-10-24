@@ -126,5 +126,9 @@
   "/philosophy": {
     "title": "Philosophy | Drake Stapleton",
     "description": "How Drake Stapleton approaches projects, duties, difficult things, and setbacks. The working philosophy behind everything he builds: there is always a way, and giving up is not one of the options."
+  },
+  "/glossary": {
+    "title": "Glossary | Drake Stapleton",
+    "description": "Definitions of AIEN, AIENOS, Omega, CUDA++, Atlas, Symphony, AEGIS, and verification terms used in this project record."
   }
 }

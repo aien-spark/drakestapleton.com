@@ -319,7 +319,7 @@ fn world_panel(i: usize, w: &World) -> Markup {
     let next = &WORLDS[(i + 1) % WORLDS.len()];
     html! {
         article class=(format!("world {}", w.realm.class())) id=(format!("w-{}", w.id)) {
-            a class="world-close" href="#map" aria-label="Back to the map" { "Close" }
+            a class="world-close" href="#map" aria-label="Close and return to the map" { "Close" }
             @if let Some((src, alt)) = w.photo {
                 figure class="world-photo" { img src=(src) alt=(alt) width="640" height="640" loading="lazy"; }
             }

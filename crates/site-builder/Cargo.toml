@@ -5,6 +5,7 @@ edition = "2021"
 description = "Fast native Rust static site generator for drakestapleton.com"
 
 [dependencies]
+htmd = "0.5.6"
 crumb-spec = { git = "https://github.com/aien-dev/crumb-spec", rev = "24194d1b7917ef19244aae6bcaff510686b75fef" }
 maud = "0.26"
 pulldown-cmark = "0.11"

@@ -19,6 +19,11 @@ pub fn render_base_layout(meta: &PageMeta, content: Markup) -> Markup {
                 title { (meta.title) }
                 meta name="description" content=(meta.description);
                 link rel="canonical" href=(meta.canonical_url);
+                @if meta.current_route != "/404" {
+                    link rel="describedby" href="/llms.txt";
+                    link rel="alternate" type="text/markdown" href=(crate::agents::markdown_path(meta.current_route));
+                    script type="application/ld+json" { (PreEscaped(crate::agents::structured_data(meta))) }
+                }
                 link rel="icon" type="image/svg+xml" href="/favicon.svg";
 
                 // Open Graph / Twitter Meta

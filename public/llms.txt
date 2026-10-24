@@ -14,5 +14,14 @@ Drake Stapleton documents production orchestration, GPU systems, model training,
 - [Symphony](https://www.drakestapleton.com/symphony): multi-model orchestration process
 
 ## Contact
-- GitHub: https://github.com/aien-dev
-- Conversation and AI research: https://www.drakestapleton.com/interest
+- [GitHub](https://github.com/aien-spark/drakestapleton.com): website source
+- [Conversation and AI research](https://www.drakestapleton.com/interest): leave a note
+
+## Agent resources
+- [Site map](https://www.drakestapleton.com/sitemap.md): public page hierarchy and Markdown links
+- [Agent guide](https://www.drakestapleton.com/AGENTS.md): navigation, evidence, and usage guidance
+- [Glossary](https://www.drakestapleton.com/glossary): terminology used on this site
+- [Home in Markdown](https://www.drakestapleton.com/index.md): generated from the homepage content
+
+## Optional
+- [Full site text](https://www.drakestapleton.com/llms-full.txt): generated Markdown for pages listed in the site map
