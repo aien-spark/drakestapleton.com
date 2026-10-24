@@ -183,7 +183,7 @@ const WORLDS: [World; 18] = [
             "395 tests, and every verdict is tied to a request and response fingerprint.",
         ],
         quote: None, photo: None,
-        link: ("/aien", "How it fits together"),
+        link: ("https://interplane.io/", "Read the protocol"),
     },
     World {
         id: "aegis", realm: Realm::Machine, name: "AEGIS", x: 68.0, y: 40.0, size: 62,
@@ -385,6 +385,12 @@ pub fn render_home_page(facts: Option<&Facts>) -> Markup {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn interplane_world_opens_the_protocol_site() {
+        let w = WORLDS.iter().find(|w| w.id == "interplane").expect("Interplane world present");
+        assert_eq!(w.link, ("https://interplane.io/", "Read the protocol"));
+    }
 
     #[test]
     fn introductory_conversation_link_is_contextual_and_retains_the_tour() {
