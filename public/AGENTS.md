@@ -37,3 +37,13 @@ cargo run --release --manifest-path crates/site-builder/Cargo.toml -- verify dis
 ```
 
 The build creates the HTML pages and their Markdown mirrors together. Edit the source templates or content, not generated mirrors. Modification dates represent source history, not the time an hourly rebuild ran.
+
+## Configuration
+
+No account, API key, or installation is needed to read this public site. For a local source build, the optional `AIEN_FACTS_FILE` environment variable supplies a local copy of the public facts JSON instead of fetching it. The final command argument selects the output directory:
+
+```sh
+AIEN_FACTS_FILE=/path/to/facts.json cargo run --release --manifest-path crates/site-builder/Cargo.toml -- build dist
+```
+
+Page titles and descriptions are configured in `site-metadata.json`. The Markdown `last_updated` and `dateModified` fields carry the same source-history timestamp. Neither field is a claim about when the live facts were measured.
