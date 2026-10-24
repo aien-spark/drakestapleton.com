@@ -19,6 +19,16 @@ cargo run --release --manifest-path crates/site-builder/Cargo.toml -- verify dis
 
 `build dist` copies `public/` into `dist/`, renders the pages and writes `sitemap.xml` and `robots.txt` (which allows all crawlers), then verifies the result. `verify dist` re-checks an existing output directory. Page titles and descriptions come from `site-metadata.json`, and the works pages come from the Markdown files in `content/works/`.
 
+## Agent-readable content
+
+Every generated content page has a Markdown mirror built from the same rendered body: `/index.md` for the homepage, `/atlas.md` for `/atlas`, and `/symphony/workflow.md` for a nested route. HTML advertises the mirror with `rel="alternate"` and the resource index with `rel="describedby"`. Page-specific JSON-LD connects the page, website, and Drake's identity. The 404 page is excluded from these discovery outputs.
+
+The build also writes `/sitemap.md` and `/llms-full.txt` for the pages in the public sitemap. `/AGENTS.md` explains public site usage; `/glossary` defines the project's terms. Edit templates and content rather than generated text to keep HTML and Markdown in sync.
+
+Sitemap `lastmod`, Markdown `dateModified`, and JSON-LD `dateModified` come from the latest Git commit touching the page's sources, shared templates, or metadata. They describe editorial source changes, not live facts or hourly rebuild times. CI checks out full history. Source archives without Git history omit dates rather than inventing them.
+
+GitHub Pages cannot negotiate `Accept: text/markdown` or set custom `Link` response headers. Use the explicit Markdown URLs and HTML discovery links on this host. Header negotiation would require a different serving layer.
+
 The build renders the home page, `/path`, `/what-i-learned`, `/philosophy`, `/software`, `/evidence`, `/atlas`, `/symphony` (with `/first`, `/workflow` and `/map`), `/donate`, `/interest`, the works index with one page per work, a 404 page, and the `/aien`, `/aegis` and `/research` pages.
 
 ## Checks

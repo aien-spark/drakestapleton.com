@@ -1,3 +1,4 @@
+mod agents;
 mod components;
 mod layouts;
 mod pages;
@@ -51,9 +52,12 @@ fn copy_dir_all(src: &Path, dst: &Path) -> std::io::Result<()> {
 fn generate_sitemap_and_robots(dist: &Path, routes: &[(&str, &str)]) {
     let mut sitemap = String::from("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n");
     for (route, priority) in routes {
+        let lastmod = agents::source_modified(route)
+            .map(|date| format!("<lastmod>{date}</lastmod>"))
+            .unwrap_or_default();
         sitemap.push_str(&format!(
-            "  <url><loc>https://www.drakestapleton.com{}</loc><priority>{}</priority></url>\n",
-            route, priority
+            "  <url><loc>https://www.drakestapleton.com{}</loc>{}<priority>{}</priority></url>\n",
+            route, lastmod, priority
         ));
     }
     sitemap.push_str("</urlset>\n");
@@ -88,6 +92,7 @@ fn render_and_write_page(
     };
 
     let page_content = markup_fn();
+    agents::write_markdown(dist, &doc_meta, &page_content);
     let full_doc = render_base_layout(&doc_meta, page_content);
     let file_dest = dist.join(rel_path);
     if let Some(parent) = file_dest.parent() {
@@ -141,6 +146,7 @@ fn build_pure_rust_site(dist: &Path) {
     render_and_write_page(dist, "/scholar", "scholar/index.html", &metadata, render_scholar_page);
     render_and_write_page(dist, "/interest", "interest/index.html", &metadata, render_interest_page);
     render_and_write_page(dist, "/donate", "donate/index.html", &metadata, render_donate_page);
+    render_and_write_page(dist, "/glossary", "glossary/index.html", &metadata, agents::render_glossary);
     render_and_write_page(dist, "/symphony", "symphony/index.html", &metadata, || render_symphony_page(None));
     render_and_write_page(dist, "/symphony/first", "symphony/first/index.html", &metadata, || render_symphony_page(Some("first")));
     render_and_write_page(dist, "/symphony/workflow", "symphony/workflow/index.html", &metadata, || render_symphony_page(Some("workflow")));
@@ -154,6 +160,7 @@ fn build_pure_rust_site(dist: &Path) {
         ("/works".to_string(), "0.9"),
         ("/research".to_string(), "0.9"),
         ("/aien".to_string(), "0.8"),
+        ("/cudaplusplus".to_string(), "0.8"),
         ("/aegis".to_string(), "0.8"),
         ("/atlas".to_string(), "0.8"),
         ("/software".to_string(), "0.8"),
@@ -163,8 +170,12 @@ fn build_pure_rust_site(dist: &Path) {
         ("/what-i-learned".to_string(), "0.7"),
         ("/philosophy".to_string(), "0.7"),
         ("/symphony".to_string(), "0.7"),
+        ("/symphony/first".to_string(), "0.6"),
+        ("/symphony/workflow".to_string(), "0.6"),
+        ("/symphony/map".to_string(), "0.6"),
         ("/interest".to_string(), "0.7"),
         ("/donate".to_string(), "0.7"),
+        ("/glossary".to_string(), "0.6"),
     ];
 
     if works_dir.exists() {
@@ -196,6 +207,7 @@ fn build_pure_rust_site(dist: &Path) {
                     };
 
                     let page_html = render_reader_page(&work_meta, &html_body);
+                    agents::write_markdown(dist, &doc_meta, &page_html);
                     let markup = render_base_layout(&doc_meta, page_html);
                     let markup_string = markup.into_string();
 
@@ -219,6 +231,7 @@ fn build_pure_rust_site(dist: &Path) {
                         current_route: &works_route,
                     };
                     let works_page_html = render_reader_page(&work_meta, &html_body);
+                    agents::write_markdown(dist, &works_doc_meta, &works_page_html);
                     let works_markup = render_base_layout(&works_doc_meta, works_page_html);
                     let works_slug_dir = dist.join("works").join(&work_meta.slug);
                     fs::create_dir_all(&works_slug_dir).expect("Failed to create works slug directory");
@@ -249,7 +262,9 @@ fn build_pure_rust_site(dist: &Path) {
         canonical_url: "https://www.drakestapleton.com/works",
         current_route: "/works",
     };
-    let works_markup = render_base_layout(&works_doc_meta, render_works_index(&collected_works));
+    let works_content = render_works_index(&collected_works);
+    agents::write_markdown(dist, &works_doc_meta, &works_content);
+    let works_markup = render_base_layout(&works_doc_meta, works_content);
     fs::write(works_dir_out.join("index.html"), works_markup.into_string())
         .expect("Failed to write works/index.html");
     println!("  [PAGE] Emitted /works (works/index.html)");
@@ -260,6 +275,7 @@ fn build_pure_rust_site(dist: &Path) {
         .map(|(r, p)| (r.as_str(), *p))
         .collect();
     generate_sitemap_and_robots(dist, &sitemap_routes);
+    agents::write_indexes(dist, &sitemap_routes, &metadata);
 }
 
 fn verify_site(dist: &Path) {
@@ -282,6 +298,7 @@ fn verify_site(dist: &Path) {
         ("scholar/index.html", "/scholar"),
         ("interest/index.html", "/interest"),
         ("donate/index.html", "/donate"),
+        ("glossary/index.html", "/glossary"),
         ("symphony/index.html", "/symphony"),
         ("symphony/first/index.html", "/symphony/first"),
         ("symphony/workflow/index.html", "/symphony/workflow"),
@@ -317,6 +334,7 @@ fn verify_site(dist: &Path) {
             .unwrap_or_else(|_| panic!("Failed to read {}", file_path.display()));
 
         total_bytes += content.len();
+        agents::verify_page(dist, route, &content);
 
         // Check for pre-rendered root content (eliminates SPA clunkiness)
         assert!(
@@ -357,6 +375,11 @@ fn verify_site(dist: &Path) {
     assert!(sitemap.exists(), "Missing sitemap.xml");
     let robots = dist.join("robots.txt");
     assert!(robots.exists(), "Missing robots.txt");
+    for name in ["llms.txt", "llms-full.txt", "sitemap.md", "AGENTS.md"] {
+        let text = fs::read_to_string(dist.join(name))
+            .unwrap_or_else(|_| panic!("Missing agent resource: {name}"));
+        assert!(!text.trim().is_empty(), "Empty agent resource: {name}");
+    }
 
     println!("------------------------------------------------------------");
     println!("  Verified {} pre-rendered static routes ({} KB total)", verified_pages, total_bytes / 1024);
