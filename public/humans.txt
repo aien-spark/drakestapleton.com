@@ -1,0 +1,12 @@
+/* TEAM */
+Name: Drake Stapleton
+Role: Freedom Fighter, AI Architect and Operator
+Site: https://www.drakestapleton.com
+Contact: https://www.drakestapleton.com/interest
+Location: Springfield, Missouri
+
+/* SITE */
+Standards: HTML5, CSS3
+Components: Rust, Maud
+Software: Pure Rust static site builder
+Language: English

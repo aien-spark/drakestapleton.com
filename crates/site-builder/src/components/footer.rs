@@ -36,7 +36,7 @@ pub fn render_footer() -> Markup {
                     a href="/aegis" { "AEGIS" }
                     a href="/interest" { "Conversation" }
                     a href="/glossary" { "Glossary" }
-                    a href="https://x.com/mdrakestapleton" { "X" }
+                    a href="https://x.com/mdrakestapleton" rel="me" { "X" }
                 }
                 nav class="site-footer-links" aria-label="Projects" {
                     span class="site-footer-line" { "Projects:" }

@@ -35,10 +35,21 @@ pub fn render_base_layout(meta: &PageMeta, content: Markup) -> Markup {
                 meta property="og:url" content=(meta.canonical_url);
                 meta property="og:type" content="website";
                 meta property="og:image" content="https://www.drakestapleton.com/og.png";
+                meta property="og:image:width" content="1200";
+                meta property="og:image:height" content="630";
+                meta property="og:image:alt" content="Drake Stapleton, Freedom Fighter, AI Architect and Operator";
+                meta property="og:site_name" content="Drake Stapleton";
+                meta property="og:locale" content="en_US";
                 meta name="twitter:card" content="summary_large_image";
+                meta name="twitter:site" content="@mdrakestapleton";
+                meta name="twitter:creator" content="@mdrakestapleton";
                 meta name="twitter:title" content=(meta.title);
                 meta name="twitter:description" content=(meta.description);
                 meta name="twitter:image" content="https://www.drakestapleton.com/og.png";
+                meta name="twitter:image:alt" content="Drake Stapleton, Freedom Fighter, AI Architect and Operator";
+                meta name="author" content="Drake Stapleton";
+                link rel="me" href="https://x.com/mdrakestapleton";
+                link rel="me" href="https://github.com/drakestapleton";
 
                 // CSS Stylesheets (system fonts only; the page makes no request outside this site)
                 link rel="stylesheet" href="/assets/style.css";
@@ -89,6 +100,28 @@ pub fn render_base_layout(meta: &PageMeta, content: Markup) -> Markup {
                     }
                 }
             }
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn head_carries_social_identity() {
+        let s = render_base_layout(
+            &PageMeta {
+                title: "Test",
+                description: "Test description",
+                canonical_url: "https://www.drakestapleton.com/",
+                current_route: "/",
+            },
+            html! {},
+        )
+        .into_string();
+        for needle in ["twitter:site", "twitter:creator", "og:site_name", "og:image:alt", "rel=\"me\""] {
+            assert!(s.contains(needle), "missing {needle}");
         }
     }
 }
