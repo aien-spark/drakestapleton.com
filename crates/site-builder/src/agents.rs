@@ -69,9 +69,14 @@ pub fn structured_data(meta: &PageMeta) -> String {
     }
     let mut graph = vec![
         json!({"@type":"Person", "@id":format!("{ORIGIN}/#person"),
-            "name":"Drake Stapleton", "url":format!("{ORIGIN}/")}),
+            "name":"Drake Stapleton",
+            "url":format!("{ORIGIN}/"),
+            "jobTitle":"Freedom Fighter, AI Architect and Operator",
+            "sameAs":["https://github.com/drakestapleton", "https://x.com/mdrakestapleton", "https://www.aienos.com/", "https://interplane.io/"]}),
         json!({"@type":"WebSite", "@id":format!("{ORIGIN}/#website"),
             "name":"Drake Stapleton", "url":format!("{ORIGIN}/"),
+            "description":"The personal project record of Drake Stapleton: model training, research, Atlas, and what his generation can build with AI.",
+            "inLanguage":"en",
             "publisher":{"@id":format!("{ORIGIN}/#person")}}),
     ];
     let id = format!("{}#breadcrumb", meta.canonical_url);
@@ -214,6 +219,22 @@ mod tests {
             value["@graph"][3]["name"],
             "</script><script>alert(1)</script>"
         );
+    }
+
+    #[test]
+    fn person_carries_identity_links_and_role() {
+        let value: serde_json::Value = serde_json::from_str(&structured_data(&meta("Atlas"))).unwrap();
+        let person = &value["@graph"][0];
+        assert_eq!(person["jobTitle"], "Freedom Fighter, AI Architect and Operator");
+        let same = person["sameAs"].as_array().expect("sameAs array");
+        for url in [
+            "https://github.com/drakestapleton",
+            "https://x.com/mdrakestapleton",
+            "https://www.aienos.com/",
+            "https://interplane.io/",
+        ] {
+            assert!(same.iter().any(|v| v == url), "missing identity link {url}");
+        }
     }
 
     #[test]
