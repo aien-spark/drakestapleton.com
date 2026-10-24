@@ -25,6 +25,8 @@ Every generated content page has a Markdown mirror built from the same rendered 
 
 The build also writes `/sitemap.md` and `/llms-full.txt` for the pages in the public sitemap. `/AGENTS.md` explains public site usage; `/glossary` defines the project's terms. Edit templates and content rather than generated text to keep HTML and Markdown in sync.
 
+IndexNow: `/7c9f2f478c66f69aec218460782e635b.txt` is the key file for Bing and Yandex submission. After a deploy, submit changed URLs to `https://api.indexnow.org/indexnow` with that key and `keyLocation`. The key is public by design.
+
 Sitemap `lastmod`, Markdown `dateModified`, and JSON-LD `dateModified` come from the latest Git commit touching the page's sources, shared templates, or metadata. They describe editorial source changes, not live facts or hourly rebuild times. CI checks out full history. Source archives without Git history omit dates rather than inventing them.
 
 GitHub Pages cannot negotiate `Accept: text/markdown` or set custom `Link` response headers. Use the explicit Markdown URLs and HTML discovery links on this host. Header negotiation would require a different serving layer.
