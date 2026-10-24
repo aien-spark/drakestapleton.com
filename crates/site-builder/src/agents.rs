@@ -74,15 +74,15 @@ pub fn structured_data(meta: &PageMeta) -> String {
             "name":"Drake Stapleton", "url":format!("{ORIGIN}/"),
             "publisher":{"@id":format!("{ORIGIN}/#person")}}),
     ];
+    let id = format!("{}#breadcrumb", meta.canonical_url);
+    let mut items = vec![json!({"@type":"ListItem", "position":1,
+        "name":"Home", "item":format!("{ORIGIN}/")})];
     if meta.current_route != "/" {
-        let id = format!("{}#breadcrumb", meta.canonical_url);
-        page["breadcrumb"] = json!({"@id":id});
-        graph.push(json!({"@type":"BreadcrumbList", "@id":id,
-        "itemListElement":[
-            {"@type":"ListItem", "position":1, "name":"Home", "item":format!("{ORIGIN}/")},
-            {"@type":"ListItem", "position":2, "name":meta.title, "item":meta.canonical_url}
-        ]}));
+        items.push(json!({"@type":"ListItem", "position":2,
+            "name":meta.title, "item":meta.canonical_url}));
     }
+    page["breadcrumb"] = json!({"@id":id});
+    graph.push(json!({"@type":"BreadcrumbList", "@id":id, "itemListElement":items}));
     graph.push(page);
     // A script element is raw text: JSON escaping alone doesn't stop </script>.
     json!({"@context":"https://schema.org", "@graph":graph})
@@ -94,7 +94,7 @@ pub fn structured_data(meta: &PageMeta) -> String {
 
 fn markdown_document(meta: &PageMeta, body: &str) -> String {
     let date = source_modified(meta.current_route)
-        .map(|d| format!("dateModified: {}\n", json!(d)))
+        .map(|d| format!("dateModified: {}\nlast_updated: {}\n", json!(d), json!(d)))
         .unwrap_or_default();
     // Fragment links refer back to HTML, whose explicit IDs remain stable.
     let body = body.replace("href=\"#", &format!("href=\"{}#", meta.canonical_url));
